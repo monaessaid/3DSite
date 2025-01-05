@@ -17,10 +17,22 @@ const geometry = new THREE.TorusGeometry(10,3,16,100)
 const material = new THREE.MeshBasicMaterial ( {color: 0x00d5ff, wireframe: true} );
 const torus = new THREE.Mesh(geometry, material);
 
+const geometry2 = new THREE.CapsuleGeometry(2,2,5,12);
+const material2 = new THREE.MeshBasicMaterial( {color: 0x00ff00, wireframe: true} ); 
+const capsule = new THREE.Mesh(geometry2, material2);
+
 scene.add(torus)
+scene.add(capsule)
 
 function animate() {
     requestAnimationFrame(animate);
+
+    torus.rotation.x += 0.01;
+    torus.rotation.y += 0.02;
+
+    capsule.rotation.x += 0.02;
+    capsule.rotation.y += 0.01;
+
     renderer.render(scene,camera);
 }
 
