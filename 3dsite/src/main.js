@@ -62,9 +62,12 @@ function addStar() {
     scene.add(star)
 }
 
-// Adds the stars throughout the scene
-Array(200).fill().forEach(addStar)
+// Adds 300 stars throughout the scene
+Array(300).fill().forEach(addStar)
 
+// Background image 
+const texture = new THREE.TextureLoader().load('./public/space.jpg');
+scene.background = texture;
 
 function animate() {
     requestAnimationFrame(animate);
