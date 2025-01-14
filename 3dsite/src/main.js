@@ -13,16 +13,21 @@ camera.position.setZ(30);
 
 renderer.render(scene,camera);
 
-const geometry = new THREE.TorusGeometry(10,3,16,100)
+const torus1 = new THREE.TorusGeometry(10,3,16,100)
 const material = new THREE.MeshBasicMaterial ( {color: 0x00d5ff, wireframe: true} );
-const torus = new THREE.Mesh(geometry, material);
+const torus = new THREE.Mesh(torus1, material);
 
-const geometry2 = new THREE.CapsuleGeometry(2,2,5,12);
+const capsule1 = new THREE.CapsuleGeometry(2,2,5,12);
 const material2 = new THREE.MeshBasicMaterial( {color: 0x00ff00, wireframe: true} ); 
-const capsule = new THREE.Mesh(geometry2, material2);
+const capsule = new THREE.Mesh(capsule1, material2);
+
+const box1 = new THREE.BoxGeometry(10,10,10);
+const material3 = new THREE.MeshBasicMaterial( {color:0xff0055 , wireframe: true} );
+const box = new THREE.Mesh(box1, material3);
 
 scene.add(torus)
 scene.add(capsule)
+scene.add(box)
 
 function animate() {
     requestAnimationFrame(animate);
@@ -32,6 +37,9 @@ function animate() {
 
     capsule.rotation.x += 0.02;
     capsule.rotation.y += 0.01;
+
+    box.rotation.x += 0.02;
+    box.rotation.y += 0.01;
 
     renderer.render(scene,camera);
 }
