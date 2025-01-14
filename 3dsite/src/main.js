@@ -50,6 +50,22 @@ scene.add(lightHelper, gridHelper)
 // Allows you to move the scene with your mouse
 const controls = new OrbitControls(camera, renderer.domElement);
 
+// Generates stars in random positions
+function addStar() {
+    const sphere = new THREE.SphereGeometry(0.25);
+    const material = new THREE.MeshBasicMaterial({ color: 0xffffff })
+    const star = new THREE.Mesh(sphere, material);
+
+    const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
+
+    star.position.set(x,y,z);
+    scene.add(star)
+}
+
+// Adds the stars throughout the scene
+Array(200).fill().forEach(addStar)
+
+
 function animate() {
     requestAnimationFrame(animate);
 
