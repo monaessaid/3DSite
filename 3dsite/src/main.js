@@ -52,9 +52,9 @@ const controls = new OrbitControls(camera, renderer.domElement);
 
 // Generates stars in random positions
 function addStar() {
-    const sphere = new THREE.SphereGeometry(0.25);
-    const material = new THREE.MeshBasicMaterial({ color: 0xffffff })
-    const star = new THREE.Mesh(sphere, material);
+    const rock = new THREE.DodecahedronGeometry(0.25,0);
+    const material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true })
+    const star = new THREE.Mesh(rock, material);
 
     const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
 
@@ -66,7 +66,7 @@ function addStar() {
 Array(300).fill().forEach(addStar)
 
 // Background image 
-const texture = new THREE.TextureLoader().load('./public/space.jpg');
+const texture = new THREE.TextureLoader().load('space.jpg');
 scene.background = texture;
 
 function animate() {
